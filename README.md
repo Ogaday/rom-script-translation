@@ -21,7 +21,7 @@ Many lines later...
 Key points:
 * Lines starting with `#` are comments
 * Each line is numbered in hexadecimal
-* The line number of the lines should not change
+* The numbering of the lines should not change
 * The script text contains artifacts such as `{03}` within the text. They
   represent different substitutions and markers within the text, such as names,
   newline characters etc. The artifacts interfere with the translation.
@@ -61,5 +61,5 @@ $ pip install -r requirements.txt && pip install -r requirements-dev.txt
 ## Testing
 
 ```bash
-$ green source -vvv
+$ ./run-tests.sh
 ```
