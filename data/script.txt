@@ -1,0 +1,8 @@
+#0CC3 Let me give you this{03}{14}{01} as a token{03}of my gratitude.{01}{00}
+Let me give you this{03}{14}{01} as a token{03}of my gratitude.{01}{00}
+#0CC4 So who gets this{03}{14}{01}?{1E}{00}
+So who gets this{03}{14}{01}?{1E}{00}
+#0CC5 What! You don't want it?{01}{00}
+What! You don't want it?{01}{00}
+#0CC6 Ask me anything{03}about armor.{1E}{00}
+Ask me anything{03}about armor.{1E}{00}
