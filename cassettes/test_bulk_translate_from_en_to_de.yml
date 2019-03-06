@@ -1,0 +1,30 @@
+interactions:
+- request:
+    body: '[{"text": "Hello, world"}, {"text": "This is an exercise in coding"}, {"text":
+      "I like writing tests"}]'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['103']
+      Content-type: [application/json]
+      User-Agent: [python-requests/2.21.0]
+      X-ClientTraceId: [1a578b12-024c-4e81-999e-d53474791264]
+    method: POST
+    uri: https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=de&from=en
+  response:
+    body: {string: "[{\"translations\":[{\"text\":\"Hallo Welt\",\"to\":\"de\"}]},{\"\
+        translations\":[{\"text\":\"Dies ist eine \xDCbung in der Codierung\",\"to\"\
+        :\"de\"}]},{\"translations\":[{\"text\":\"Ich schreibe gerne Tests\",\"to\"\
+        :\"de\"}]}]"}
+    headers:
+      Access-Control-Expose-Headers: [X-RequestId]
+      Content-Length: ['195']
+      Content-Type: [application/json; charset=utf-8]
+      Date: ['Wed, 06 Mar 2019 13:23:23 GMT']
+      Strict-Transport-Security: [max-age=31536000; includeSubDomains]
+      X-Content-Type-Options: [nosniff]
+      X-MT-System: [Microsoft]
+      X-RequestId: [TRAN.D3CE.ACE55F35]
+    status: {code: 200, message: OK}
+version: 1
