@@ -85,6 +85,7 @@ def bulk_translate(source_texts, to, from_=None):
         r.raise_for_status()
     except requests.HTTPError:
         # Error handling
+        print("Error: {code} - {message}".format(**r.json()['error']))
         raise
 
     return [t['translations'][0]['text'] for t in r.json()]
