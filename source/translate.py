@@ -52,6 +52,7 @@ def translate(source_text, to, from_=None):
         r.raise_for_status()
     except requests.HTTPError:
         # Error handling
+        print("Error: {code} - {message}".format(**r.json()['error']))
         raise
 
     return r.json()[0]["translations"][0]["text"]
