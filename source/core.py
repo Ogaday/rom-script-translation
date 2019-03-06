@@ -2,7 +2,7 @@
 This module contains ROM script primitives
 """
 from source.translate import translate, bulk_translate
-from source.utils import annotated, deannotated, paginate
+from source.utils import annotated, deannotated
 
 
 class Script:
@@ -50,7 +50,7 @@ class Script:
         """
         translated_lines = []
 
-        for page in paginate(self.lines, batch_size):
+        for page in self.paginate():
             contents = [line.content for line in page]
             comments = [line.comment for line in page]
             source_texts = [annotated(content) for content in contents]
@@ -64,6 +64,41 @@ class Script:
                 ]
             translated_lines += translated_page
         return self.__class__(translated_lines)
+
+    def paginate(self, max_buffer=5000, max_lines=100):
+        """
+        Iterate through chunks of lines to fit the translation requests
+
+        The Microsoft azure request has limitations on size:
+            * Each request must have no more than 100 lines to translate
+            * The combined characters of each request must be less than 5000
+
+        TODO:
+            * This should be called within the microsoft specific
+              `bulk_translate` function, as that's why this logic must be
+              implemented.
+        """
+        start = 0
+        stop = 0
+
+        while stop < len(self.lines):
+            if len(annotated(self.lines[stop].content)) > max_buffer:
+                raise Exception('A line is too long')
+            buffer_size = len(
+                    ''.join(
+                        [
+                            annotated(line.content)
+                            for line in self.lines[start:stop + 1]
+                        ]
+                    )
+                )
+            num_lines = len(self.lines[start:stop + 1])
+            if buffer_size > max_buffer or num_lines > max_lines:
+                yield self.lines[start:stop]
+                start = stop
+            stop += 1
+        else:
+            yield self.lines[start:stop]
 
     def roundtrip(self, via, n=1):
         """
