@@ -1,8 +1,8 @@
 """
 This module contains ROM script primitives
 """
-from source.translate import translate
-from source.utils import annotated, deannotated
+from source.translate import translate, bulk_translate
+from source.utils import annotated, deannotated, paginate
 
 
 class Script:
@@ -39,7 +39,7 @@ class Script:
     def __str__(self):
         return "\n".join(str(line) for line in self.lines)
 
-    def translate(self, to):
+    def translate(self, to, batch_size=50):
         """
         Translate the script to the target language.
 
@@ -48,7 +48,21 @@ class Script:
         Returns a new, translated instance of Script and this script is
         unmodified
         """
-        translated_lines = [line.translate(to) for line in self.lines]
+        translated_lines = []
+
+        for page in paginate(self.lines, batch_size):
+            contents = [line.content for line in page]
+            comments = [line.comment for line in page]
+            source_texts = [annotated(content) for content in contents]
+            translated_contents = [
+                    deannotated(text) for text in
+                    bulk_translate(source_texts=source_texts, to=to)
+                ]
+            translated_page = [
+                    Line(content, comment) for content, comment in
+                    zip(translated_contents, comments)
+                ]
+            translated_lines += translated_page
         return self.__class__(translated_lines)
 
     def roundtrip(self, via, n=1):

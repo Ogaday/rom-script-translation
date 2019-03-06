@@ -1,6 +1,8 @@
 import io
 import unittest
 
+import vcr
+
 from source.core import Script, Line
 
 
@@ -30,6 +32,23 @@ class TestScript(unittest.TestCase):
         with io.StringIO() as stream:
             sc.to_script(stream)
             self.assertEqual(stream.getvalue().strip(), sample.strip())
+
+    @vcr.use_cassette(
+            "cassettes/test_script_translate_from_en_to_de.yml",
+            filter_headers=["Ocp-Apim-Subscription-Key"]
+        )
+    def test_translate(self):
+        with io.StringIO(sample) as stream:
+            sc = Script.from_script(stream)
+        s_de = sc.translate(to='de', batch_size=4)
+        with self.subTest():
+            self.assertEqual(len(s_de.lines), len(sc.lines))
+        with self.subTest():
+            expected = (
+                    "Fragen Sie mich nach irgendetwas{03}über Rüstung."
+                    "{1E}{00}"
+                )
+            self.assertEqual(s_de.lines[-1].content, expected)
 
 
 class TestLine(unittest.TestCase):

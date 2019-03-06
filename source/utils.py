@@ -21,3 +21,13 @@ def deannotated(source_text):
             )
         )
     return outtext
+
+
+def paginate(l, page_size):
+    start = 0
+    stop = page_size
+
+    while start < len(l):
+        yield l[start:stop]
+        start = stop
+        stop += page_size

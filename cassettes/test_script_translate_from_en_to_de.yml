@@ -1,0 +1,42 @@
+interactions:
+- request:
+    body: '[{"text": "Let me give you this<div class=\"notranslate\">{03}</div><div
+      class=\"notranslate\">{14}</div><div class=\"notranslate\">{01}</div> as a token<div
+      class=\"notranslate\">{03}</div>of my gratitude.<div class=\"notranslate\">{01}</div><div
+      class=\"notranslate\">{00}</div>"}, {"text": "So who gets this<div class=\"notranslate\">{03}</div><div
+      class=\"notranslate\">{14}</div><div class=\"notranslate\">{01}</div>?<div class=\"notranslate\">{1E}</div><div
+      class=\"notranslate\">{00}</div>"}, {"text": "What! You don''t want it?<div
+      class=\"notranslate\">{01}</div><div class=\"notranslate\">{00}</div>"}, {"text":
+      "Ask me anything<div class=\"notranslate\">{03}</div>about armor.<div class=\"notranslate\">{1E}</div><div
+      class=\"notranslate\">{00}</div>"}]'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['763']
+      Content-type: [application/json]
+      User-Agent: [python-requests/2.21.0]
+      X-ClientTraceId: [b6ecb540-8bef-4945-af84-c1f446e5a7ff]
+    method: POST
+    uri: https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=de
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAEAM1TsWrDMBD9levNJrVpp5CmS1oIdGqHQpMMsnzYwvYJpEtTMP6tTtn8Yz1aktEY
+        WmgWIYl3unfvPW06LEjIChVPhsu9KQnnHTbnPRJjgtH6oIdslvYJSjAcGyPOc8T5pkOhD1Hk2lbQ
+        Dp+2EoJ1xcRQOIoUYVG4d7CNifFui+xP9bTFZZfe9LC4VsByFJbdToKl2Rlmmghv5GylPCYSaMkx
+        BVgZrnMTanICJeXEs6k9R2HpCaZ6ile9CsJ+1yd/6MCrste5PeRU+7aVHwP+Rf/78eceLkczE6/g
+        xREcfNNoVjSvrKmR8QEuyPTHoBX8PUKrxIGNLi7onbY4mMnfbzjmGp/n4Rhlz+V45n/p3+4Lp8Ac
+        yXcEAAA=
+    headers:
+      Access-Control-Expose-Headers: [X-RequestId]
+      Content-Encoding: [gzip]
+      Content-Length: ['290']
+      Content-Type: [application/json; charset=utf-8]
+      Date: ['Wed, 06 Mar 2019 14:21:23 GMT']
+      Strict-Transport-Security: [max-age=31536000; includeSubDomains]
+      X-Content-Type-Options: [nosniff]
+      X-MT-System: ['Microsoft,Microsoft,Microsoft,Microsoft']
+      X-RequestId: [TRAN.D3CE.8CC00C93]
+    status: {code: 200, message: OK}
+version: 1
