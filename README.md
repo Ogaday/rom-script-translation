@@ -28,9 +28,10 @@ Key points:
 
 ## Translation Service
 
-I'm using the microsoft translation service on azure because they have a free
-tier. However, I'll structure the code so it's relatively easy to swap out the
-translation backend.
+I'm using the
+[Microsoft Translation Service](https://azure.microsoft.com/en-us/services/cognitive-services/translator-text-api/)
+on azure because they have a free tier. However, I'll structure the code so
+it's relatively easy to swap out the translation backend.
 
 In order to use the translation service, you need to set an environment
 variable for the service key.
