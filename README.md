@@ -4,6 +4,17 @@ Helping my friend round-trip translate the script for a game, such as the one
 produced by the
 [Golden Sun Translation Toolkit](https://sourceforge.net/projects/gstoolkit/).
 
+## Usage
+
+Once your environment is set up, there is a CLI utility that can be run from
+the root of the repo. It reads a script from stdin and pipes it to stdout. eg.
+the following bash command first translates the contents of `data/script.txt`
+to german, then to english and then saves it in `data/script_roundtrip.txt`.
+
+```bash
+$ cat data/script.txt | python -m translate de | python -m translate en > data/script_roundtrip.txt
+```
+
 ## Script Format
 
 The script for the game comes in a specific format.
