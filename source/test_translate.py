@@ -2,7 +2,7 @@ import unittest
 
 import vcr
 
-from source.translate import translate, bulk_translate
+from source.translate import translate
 
 
 class TestTranslate(unittest.TestCase):
@@ -29,7 +29,7 @@ class TestTranslate(unittest.TestCase):
                 "Dies ist eine Übung in der Codierung",
                 "Ich schreibe gerne Tests"
             ]
-        translated_texts = bulk_translate(source_texts, from_="en", to="de")
+        translated_texts = translate(source_texts, from_="en", to="de")
         for translated, expected in zip(translated_texts, expected_texts):
             with self.subTest():
                 self.assertEqual(translated, expected)

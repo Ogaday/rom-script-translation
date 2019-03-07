@@ -1,7 +1,7 @@
 """
 This module contains ROM script primitives
 """
-from source.translate import translate, bulk_translate
+from source.translate import translate
 from source.utils import annotated, deannotated
 
 
@@ -56,7 +56,7 @@ class Script:
             source_texts = [annotated(content) for content in contents]
             translated_contents = [
                     deannotated(text) for text in
-                    bulk_translate(source_texts=source_texts, to=to)
+                    translate(source_text=source_texts, to=to)
                 ]
             translated_page = [
                     Line(content, comment) for content, comment in
@@ -75,7 +75,7 @@ class Script:
 
         TODO:
             * This should be called within the microsoft specific
-              `bulk_translate` function, as that's why this logic must be
+              `translate` function, as that's why this logic must be
               implemented.
         """
         start = 0
