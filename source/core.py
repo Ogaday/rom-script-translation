@@ -48,57 +48,12 @@ class Script:
         Returns a new, translated instance of Script and this script is
         unmodified
         """
-        translated_lines = []
-
-        for page in self.paginate():
-            contents = [line.content for line in page]
-            comments = [line.comment for line in page]
-            source_texts = [annotated(content) for content in contents]
-            translated_contents = [
-                    deannotated(text) for text in
-                    translate(source_text=source_texts, to=to)
-                ]
-            translated_page = [
-                    Line(content, comment) for content, comment in
-                    zip(translated_contents, comments)
-                ]
-            translated_lines += translated_page
+        contents = [annotated(line.content) for line in self.lines]
+        translations = [deannotated(t) for t in translate(contents, to=to)]
+        translated_lines = [
+                Line(t, l.comment) for t, l in zip(translations, self.lines)
+            ]
         return self.__class__(translated_lines)
-
-    def paginate(self, max_buffer=5000, max_lines=100):
-        """
-        Iterate through chunks of lines to fit the translation requests
-
-        The Microsoft azure request has limitations on size:
-            * Each request must have no more than 100 lines to translate
-            * The combined characters of each request must be less than 5000
-
-        TODO:
-            * This should be called within the microsoft specific
-              `translate` function, as that's why this logic must be
-              implemented.
-        """
-        start = 0
-        stop = 0
-
-        while stop < len(self.lines):
-            if len(annotated(self.lines[stop].content)) > max_buffer:
-                raise Exception('A line is too long')
-            buffer_size = len(
-                    ''.join(
-                        [
-                            annotated(line.content)
-                            for line in self.lines[start:stop + 1]
-                        ]
-                    )
-                )
-            num_lines = len(self.lines[start:stop + 1])
-            if buffer_size > max_buffer or num_lines > max_lines:
-                yield self.lines[start:stop]
-                start = stop
-            stop += 1
-        else:
-            yield self.lines[start:stop]
 
     def roundtrip(self, via, n=1):
         """
