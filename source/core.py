@@ -39,7 +39,7 @@ class Script:
     def __str__(self):
         return "\n".join(str(line) for line in self.lines) + "\n"
 
-    def translate(self, to, batch_size=50):
+    def translate(self, to):
         """
         Translate the script to the target language.
 

@@ -40,7 +40,7 @@ class TestScript(unittest.TestCase):
     def test_translate(self):
         with io.StringIO(sample) as stream:
             sc = Script.from_script(stream)
-        s_de = sc.translate(to='de', batch_size=4)
+        s_de = sc.translate(to='de')
         with self.subTest():
             self.assertEqual(len(s_de.lines), len(sc.lines))
         with self.subTest():
