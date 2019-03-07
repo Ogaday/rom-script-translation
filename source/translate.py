@@ -36,7 +36,8 @@ def translate(source_text, to, from_=None):
 
     params = {
             "api-version": "3.0",
-            "to": to
+            "to": to,
+            "textType": "html"
         }
     if from_ is not None:
         params["from"] = from_
@@ -73,7 +74,8 @@ def bulk_translate(source_texts, to, from_=None):
 
     params = {
             "api-version": "3.0",
-            "to": to
+            "to": to,
+            "textType": "html"
         }
     if from_ is not None:
         params["from"] = from_

@@ -16,27 +16,26 @@ interactions:
       Content-Length: ['763']
       Content-type: [application/json]
       User-Agent: [python-requests/2.21.0]
-      X-ClientTraceId: [b6ecb540-8bef-4945-af84-c1f446e5a7ff]
+      X-ClientTraceId: [1f37f002-9fd1-4ff3-ae5c-c60da2d18068]
     method: POST
-    uri: https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=de
+    uri: https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=de&textType=html
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAEAM1TsWrDMBD9levNJrVpp5CmS1oIdGqHQpMMsnzYwvYJpEtTMP6tTtn8Yz1aktEY
-        WmgWIYl3unfvPW06LEjIChVPhsu9KQnnHTbnPRJjgtH6oIdslvYJSjAcGyPOc8T5pkOhD1Hk2lbQ
-        Dp+2EoJ1xcRQOIoUYVG4d7CNifFui+xP9bTFZZfe9LC4VsByFJbdToKl2Rlmmghv5GylPCYSaMkx
-        BVgZrnMTanICJeXEs6k9R2HpCaZ6ile9CsJ+1yd/6MCrste5PeRU+7aVHwP+Rf/78eceLkczE6/g
-        xREcfNNoVjSvrKmR8QEuyPTHoBX8PUKrxIGNLi7onbY4mMnfbzjmGp/n4Rhlz+V45n/p3+4Lp8Ac
-        yXcEAAA=
+        H4sIAAAAAAAEAM2TwUrDQBCGX2Wdc6gJeiq14kGh0JMeBNseJtkhDd3MQmZqhZA38VG89cUcahVP
+        IaCU3nbYb2d+/vl30YInpULJz5HLLZYE4xbCzxmIIQEpYmNFNkq7BLRBloBaRRYYL1pQelMj5yhC
+        7J4qcnVVrN1szVZ6FFdSTjzx1asrgkE3S+D43YWWMG3Tq25yaffTPii7HgCl2RG6C+JeyHQMnDwz
+        xR55Q1+6R4OG9ELpETL/NJo/nqBbdck/Ov5MjcMg8WByTptY13pim297W92fiU8oF4dc7mIIlkkS
+        x5YM7RV/Lkt+aOzFr29FukMZtOX9e24Bedx/iG657E30Xza1+gTr5gpJRQQAAA==
     headers:
       Access-Control-Expose-Headers: [X-RequestId]
       Content-Encoding: [gzip]
-      Content-Length: ['290']
+      Content-Length: ['274']
       Content-Type: [application/json; charset=utf-8]
-      Date: ['Wed, 06 Mar 2019 14:21:23 GMT']
+      Date: ['Wed, 06 Mar 2019 21:16:07 GMT']
       Strict-Transport-Security: [max-age=31536000; includeSubDomains]
       X-Content-Type-Options: [nosniff]
       X-MT-System: ['Microsoft,Microsoft,Microsoft,Microsoft']
-      X-RequestId: [TRAN.D3CE.8CC00C93]
+      X-RequestId: [TRAN.1DCD.D89DD69F]
     status: {code: 200, message: OK}
 version: 1

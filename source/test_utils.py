@@ -15,9 +15,9 @@ class TestAnnotation(unittest.TestCase):
 
     def test_deannotate(self):
         text = (
-                'Fragen Sie mich nach irgendetwas <div class="notranslate">'
-                '{03} </div> über Rüstung. <div class="notranslate">{1E} '
-                '</div> <div class="notranslate">{00} </div>'
+                'Fragen Sie mich nach irgendetwas<div class="notranslate">'
+                '{03}</div>über Rüstung.<div class="notranslate">{1E}'
+                '</div><div class="notranslate">{00}</div>'
             )
         expected = 'Fragen Sie mich nach irgendetwas{03}über Rüstung.{1E}{00}'
         self.assertEqual(deannotated(text), expected)

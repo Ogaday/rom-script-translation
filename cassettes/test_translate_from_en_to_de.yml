@@ -8,19 +8,19 @@ interactions:
       Content-Length: ['27']
       Content-type: [application/json]
       User-Agent: [python-requests/2.21.0]
-      X-ClientTraceId: [1558c344-d74d-41af-9a2d-a07d8f53e497]
+      X-ClientTraceId: [d81d0a6a-2da5-474e-80b0-4a1922822deb]
     method: POST
-    uri: https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=de&from=en
+    uri: https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=de&textType=html&from=en
   response:
     body: {string: '[{"translations":[{"text":"Hallo Welt!","to":"de"}]}]'}
     headers:
       Access-Control-Expose-Headers: [X-RequestId]
       Content-Length: ['53']
       Content-Type: [application/json; charset=utf-8]
-      Date: ['Wed, 06 Mar 2019 13:11:17 GMT']
+      Date: ['Wed, 06 Mar 2019 21:16:07 GMT']
       Strict-Transport-Security: [max-age=31536000; includeSubDomains]
       X-Content-Type-Options: [nosniff]
       X-MT-System: [Microsoft]
-      X-RequestId: [TRAN.1DCD.87B7E583]
+      X-RequestId: [TRAN.13B3.0ED0291C]
     status: {code: 200, message: OK}
 version: 1

@@ -45,8 +45,7 @@ class TestScript(unittest.TestCase):
             self.assertEqual(len(s_de.lines), len(sc.lines))
         with self.subTest():
             expected = (
-                    "Fragen Sie mich nach irgendetwas{03}über Rüstung."
-                    "{1E}{00}"
+                    "Fragen Sie mich etwas{03}Über Rüstung.{1E}{00}"
                 )
             self.assertEqual(s_de.lines[-1].content, expected)
 
