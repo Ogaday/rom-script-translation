@@ -1,6 +1,7 @@
 """
 Simple module for translation using Microsoft Azure Machine Translation Service
 """
+import logging
 import os
 import uuid
 
@@ -11,15 +12,19 @@ from requests.packages.urllib3.util.retry import Retry
 from source.utils import paginate
 
 
+logger = logging.getLogger(__name__)
+
+
 BASE_URL = "https://api.cognitive.microsofttranslator.com"
 RELATIVE_URL = "/translate"
 ENDPOINT = BASE_URL + RELATIVE_URL
 
 
+logger.debug("Reading TRANSLATOR_TEXT_KEY from environment")
 try:
     KEY = os.environ["TRANSLATOR_TEXT_KEY"]    # MS Azure Translation key
 except KeyError:
-    print("Environment variable TRANSLATOR_TEXT_KEY is not set.")
+    logger.critical("Environment variable TRANSLATOR_TEXT_KEY is not set.")
     raise
 
 
@@ -49,12 +54,17 @@ def post_translate(source_text, to, from_=None):
     else:
         body = [{"text": source_text} for source_text in source_text]
 
+    logger.info(
+            f"Making request to {ENDPOINT} with parameters {params}"
+        )
     r = session.post(ENDPOINT, headers=headers, params=params, json=body)
     try:
         r.raise_for_status()
     except requests.HTTPError:
         # Error handling
-        print("Error: {code} - {message}".format(**r.json()['error']))
+        logger.critical(
+                "Error: {code} - {message}".format(**r.json()['error'])
+            )
         raise
 
     if type(source_text) == str:
@@ -82,6 +92,10 @@ def translate(source_text, to, from_=None):
         return post_translate(source_text, to=to, from_=from_)
     else:
         translations = []
+        logger.debug("Paging translation texts")
         for page in paginate(source_text, max_buffer=5000, max_lines=100):
+            logger.debug(
+                    f"Page lines: {len(page)}, size: {len(''.join(page))}"
+                )
             translations += post_translate(page, to=to, from_=from_)
         return translations
