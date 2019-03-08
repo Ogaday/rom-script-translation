@@ -56,7 +56,8 @@ $ export TRANSLATION_TEXT_KEY=abcd1234...789xyz
 ## Development Environment
 
 This code was developed on linux using Python 3.6. I suggest you use a python
-`virtualenv` to manage the environment.
+[virtual environment](https://virtualenv.pypa.io/en/stable/) to manage the
+dependencies.
 
 For instance:
 
@@ -67,7 +68,8 @@ $ python -m virtualenv -p /path/to/python3.6 venv
 Once you have the virtual env, you can run 
 
 ```bash
-$ pip install -r requirements.txt && pip install -r requirements-dev.txt
+$ source venv/bin/activate
+(venv) $ pip install -r requirements.txt && pip install -r requirements-dev.txt
 ```
 
 ## Testing
